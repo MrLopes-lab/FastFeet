@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
 
 import User from '../models/User';
+import authConfig from '../../config/auth';
 
 class SessionController {
   async store(req, res) {
@@ -27,8 +28,8 @@ class SessionController {
         name,
         email
       },
-      token: jwt.sign({ id }, 'a42332df16f2f6cf96821d58d9ce3077', {
-        expiresIn: '7d'
+      token: jwt.sign({ id }, authConfig.secret, {
+        expiresIn: authConfig.secret
       })
     });
   }
