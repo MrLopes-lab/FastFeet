@@ -1,0 +1,1 @@
+soft delete - paranoid = funcionalidade no sequelize que torna uma informação inativa de ao inves de deletala!

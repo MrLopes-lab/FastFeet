@@ -41,7 +41,7 @@ class SessionController {
         email
       },
       token: jwt.sign({ id }, authConfig.secret, {
-        expiresIn: authConfig.secret
+        expiresIn: authConfig.expiresIn
       })
     });
   }
