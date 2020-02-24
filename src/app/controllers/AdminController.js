@@ -1,8 +1,8 @@
-import User from '../models/User';
+import Admin from '../models/Admin';
 
 class AdminController {
   async index(req, res) {
-    const admins = await User.findAll();
+    const admins = await Admin.findAll();
 
     return res.json(admins);
   }

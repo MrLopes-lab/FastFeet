@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import * as Yup from 'yup';
 
-import User from '../models/User';
+import Admin from '../models/Admin';
 import authConfig from '../../config/auth';
 
 class SessionController {
@@ -20,22 +20,22 @@ class SessionController {
     const { email, password } = req.body;
 
     // Verificar se exite um usuario com o email e senha informado
-    const user = await User.findOne({ where: { email } });
+    const admin = await Admin.findOne({ where: { email } });
 
     // Verifica email
-    if (!user) {
-      return res.status(401).json({ error: 'User not found' });
+    if (!admin) {
+      return res.status(401).json({ error: 'admin not found' });
     }
 
     // Verifica senha
-    if (!(await user.checkPassword(password))) {
+    if (!(await admin.checkPassword(password))) {
       return res.status(401).json({ error: 'Password does not match' });
     }
 
-    const { id, name } = user;
+    const { id, name } = admin;
 
     return res.json({
-      user: {
+      admin: {
         id,
         name,
         email

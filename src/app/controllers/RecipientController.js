@@ -20,6 +20,7 @@ class RecipientController {
       return res.status(400).json({ error: 'Validation fails!' });
     }
 
+    // Gravar no banco de dados
     const {
       nome,
       rua,
