@@ -8,9 +8,16 @@ class Deliverymens extends Model {
         email: Sequelize.STRING
       },
       {
-        sequelize
+        sequelize,
+        paranoid: true
       }
     );
+
+    return this;
+  }
+
+  static associate(models) {
+    this.belongsTo(models.Files, { foreignKey: 'avatar_id' });
   }
 }
 
