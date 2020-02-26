@@ -7,6 +7,7 @@ import AdminController from './app/controllers/AdminController';
 import RecipientController from './app/controllers/RecipientController';
 import FileController from './app/controllers/FileController';
 import DeliverymenController from './app/controllers/DeliverymenController';
+import DeliveryController from './app/controllers/DeliveryController';
 
 import authMiddleware from './app/middlewares/auth';
 
@@ -30,5 +31,8 @@ routes.post('/deliverymen', DeliverymenController.store);
 routes.get('/deliverymen', DeliverymenController.index);
 routes.put('/deliverymen/:id', DeliverymenController.update);
 routes.delete('/deliverymen/:id', DeliverymenController.delete);
+
+// *** CRIAÇÃO, EDIÇÃO, LISTAGEM E DELETE DE ENTREGAS
+routes.post('/delivery', DeliveryController.store);
 
 export default routes;
