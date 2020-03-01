@@ -12,9 +12,9 @@ module.exports = {
         references: { model: 'recipients', key: 'id' },
         allowNull: false
       },
-      deliverymen_id: {
+      deliveryman_id: {
         type: Sequelize.INTEGER,
-        references: { model: 'deliverymens', key: 'id' },
+        references: { model: 'deliverymen', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL',
         allowNull: false
@@ -28,8 +28,8 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
-      caneled_at: {
-        type: Sequelize.INTEGER,
+      canceled_at: {
+        type: Sequelize.DATE,
         allowNull: true
       },
       start_date: {

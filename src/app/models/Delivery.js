@@ -7,7 +7,9 @@ class Delivery extends Model {
         product: Sequelize.STRING
       },
       {
-        sequelize
+        sequelize,
+        deletedAt: 'canceled_at',
+        paranoid: true
       }
     );
 
@@ -19,9 +21,9 @@ class Delivery extends Model {
       foreignKey: 'recipient_id',
       as: 'recipient'
     });
-    this.belongsTo(models.Deliverymen, {
-      foreignKey: 'deliverymen_id',
-      as: 'deliverymen'
+    this.belongsTo(models.Deliveryman, {
+      foreignKey: 'deliveryman_id',
+      as: 'deliveryman'
     });
   }
 }

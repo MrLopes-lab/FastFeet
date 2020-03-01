@@ -41,6 +41,13 @@ class RecipientController {
       cep
     });
   }
+
+  // LISTAR DESTINATARIOS
+  async index(req, res) {
+    const recipients = await Recipient.findAll();
+
+    return res.json(recipients);
+  }
 }
 
 export default new RecipientController();
