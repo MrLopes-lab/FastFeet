@@ -7,11 +7,15 @@ import AdminController from './app/controllers/AdminController';
 import RecipientController from './app/controllers/RecipientController';
 import FileController from './app/controllers/FileController';
 import DeliveryController from './app/controllers/DeliveryController';
+import DeliverymanController from './app/controllers/DeliverymanController'; // Envio de arquivos
 
 import authMiddleware from './app/middlewares/auth';
 
 const routes = new Router();
-const upload = multer(multerConfig); // Envio de arquivos
+const upload = multer(multerConfig);
+
+// *** LISTAGEM DE ENTREGAS - ENTREGADOR ***
+routes.get('/deliveryman/:id/deliveries', DeliverymanController.index);
 
 // *** CRIAÇÃO DE SESSÃO ADMIN
 routes.post('/sessions', SessionController.store);
