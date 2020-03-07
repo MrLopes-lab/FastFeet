@@ -4,7 +4,9 @@ class Delivery extends Model {
   static init(sequelize) {
     super.init(
       {
-        product: Sequelize.STRING
+        product: Sequelize.STRING,
+        start_date: Sequelize.DATE,
+        end_date: Sequelize.DATE
       },
       {
         sequelize,
