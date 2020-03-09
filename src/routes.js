@@ -9,6 +9,7 @@ import FileController from './app/controllers/FileController';
 import DeliveryController from './app/controllers/DeliveryController';
 import DeliverymanController from './app/controllers/DeliverymanController';
 import StartDeliveryController from './app/controllers/StartDeliveryController';
+import EndDeliveryController from './app/controllers/EndDeliveryController';
 
 import authMiddleware from './app/middlewares/auth';
 
@@ -22,8 +23,16 @@ const upload = multer(multerConfig);
 // --LISTAGEM DE ENTREGAS--
 routes.get('/deliveryman/:id', DeliverymanController.index);
 
-// --STATUS DE ENCOMENDA--
+// --START DE ENCOMENDA--
 routes.put('/deliveryman/:id/start-delivery', StartDeliveryController.update);
+
+// --END DE ENCOMENDA--
+routes.post(
+  '/deliveryman/:id/file-signature',
+  upload.single('signature'),
+  FileController.store
+);
+routes.put('/deliveryman/:id/end-delivery', EndDeliveryController.update);
 
 //------------------------------------------------------------------------------
 

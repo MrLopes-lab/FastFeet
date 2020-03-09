@@ -1,6 +1,9 @@
 import * as Yup from 'yup';
 
 import Delivery from '../models/Delivery';
+import Deliveryman from '../models/Deliveryman';
+
+import Mail from '../../lib/Mail';
 
 class DeliveryController {
   // ***CRIAR UMA NOVA ENTREGA***
@@ -18,6 +21,14 @@ class DeliveryController {
     const { recipient_id, deliveryman_id, product } = await Delivery.create(
       req.body
     );
+
+    const { name, email } = await Deliveryman.findByPk(req.body.deliveryman_id);
+
+    await Mail.sendMail({
+      to: `${name} <${email}>`,
+      subject: 'Entrega disponivel para retirada',
+      text: 'Você pode se dirigir à central'
+    });
 
     return res.json({
       recipient_id,

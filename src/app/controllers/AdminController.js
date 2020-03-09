@@ -43,7 +43,7 @@ class AdminController {
       return res.status(400).json({ error: 'Validation fails!' });
     }
 
-    const { email } = req.body;
+    const { email, avatar_id } = req.body;
 
     const deliveryman = await Deliveryman.findByPk(req.params.id);
 
@@ -51,16 +51,17 @@ class AdminController {
       return res.status(400).json({ error: "Delivery Man doesn't exist!" });
     }
 
-    if (email === deliveryman.email) {
-      return res.status(400).json({ error: 'Email already exists!' });
-    }
+    // if (email === deliveryman.email) {
+    //   return res.status(400).json({ error: 'Email already exists!' });
+    // }
 
     const { id, name } = await deliveryman.update(req.body);
 
     return res.json({
       id,
       name,
-      email
+      email,
+      avatar_id
     });
   }
 
